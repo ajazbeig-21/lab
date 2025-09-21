@@ -1,0 +1,30 @@
+version: 0.2
+
+env:
+  parameter-store:
+    DOCKER_USERNAME: /node-server/docker-credentials/username
+    DOCKER_PASSWORD: /node-server/docker-credentials/password
+    DOCKER_URL: /node-server/docker-registry/url
+    
+phases:
+  install:
+    runtime-versions:
+      node: 22.11.0
+  pre_build:
+    commands:
+      - echo "doing npm install"
+      - cd aws-cicd
+      - cd node-server
+      - npm install
+  build:
+    commands:
+      - echo "Build Docker Image from Dockerfile"
+      - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin $DOCKER_URL
+      - docker build -t "$DOCKER_URL/$DOCKER_USERNAME/node-server:latest" .
+      - docker push "$DOCKER_URL/$DOCKER_USERNAME/node-server:latest"
+  post_build:
+    commands:
+      - echo "CI Stage completed and Image pushed to Docker registery"
+      
+      
+
