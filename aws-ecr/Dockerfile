@@ -1,18 +1,21 @@
-# Use official lightweight Python image
+# Use official Python image
 FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install FastAPI and Uvicorn
-RUN pip install fastapi uvicorn
+# Copy dependencies first for caching
+COPY requirements.txt .
 
-# Copy project files
-COPY . .
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy app code
+COPY app.py .
 
 # Expose port
 EXPOSE 8000
 
-# Start the server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the FastAPI app with uvicorn
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 
