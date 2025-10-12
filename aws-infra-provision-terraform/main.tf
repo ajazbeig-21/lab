@@ -45,3 +45,66 @@ resource "aws_route_table_association" "rtableassociation2" {
   subnet_id      = aws_subnet.subnet2.id
   route_table_id = aws_route_table.rtable.id
 }
+
+
+# > terraform validate 
+# Check for the validity of the configuration files in a directory
+# Success! The configuration is valid.
+
+# > terraform plan
+# An execution plan has been generated and is shown below.
+# Resource actions are indicated with the following symbols:
+#   + create
+
+# > terraform apply
+# Do you want to perform these actions?
+#   Terraform will perform the actions described above.
+#   Only 'yes' will be accepted to approve.
+#   Enter a value: yes
+
+resource "aws_security_group" "my_security_group" {
+  vpc_id = aws_vpc.my_vpc.id
+  name   = "web_sg"
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "SSH 22"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_s3_bucket" "bucket" {
+  bucket = "ajaz-terraform-bucket-2025"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_instance" "web" {
+    ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+    instance_type = "t2.micro"
+    vpc_security_group_ids = [aws_security_group.my_security_group.id]
+    
+    tags = {
+        Name = "WebServerInstance"
+    }
+}
