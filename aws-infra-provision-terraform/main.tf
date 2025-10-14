@@ -90,17 +90,8 @@ resource "aws_security_group" "my_security_group" {
   }
 }
 
-resource "aws_s3_bucket" "bucket" {
-  bucket = "ajaz-terraform-bucket-2025"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
 resource "aws_instance" "web_server_1" {
-    ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+    ami           = "ami-052064a798f08f0d3" # Amazon Linux 2 AMI (HVM), SSD Volume Type
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.my_security_group.id]
     subnet_id = aws_subnet.subnet1.id
@@ -108,11 +99,11 @@ resource "aws_instance" "web_server_1" {
         Name = "WebServerInstance"
     }
     //When we script start then this script will run
-    user_data = base64encode(file("user_data.sh"))
-}
+ user_data = file("${path.module}/user_data.sh")
+ }
 
 resource "aws_instance" "web_server_2" {
-    ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+    ami           = "ami-052064a798f08f0d3" # Amazon Linux 2 AMI (HVM), SSD Volume Type
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.my_security_group.id]
     subnet_id = aws_subnet.subnet2.id
@@ -120,7 +111,7 @@ resource "aws_instance" "web_server_2" {
         Name = "WebServerInstance"
     }
     //When we script start then this script will run
-    user_data = base64encode(file("user_data1.sh"))
+     user_data = file("${path.module}/user_data1.sh")
 }
 
 resource "aws_lb" "ajaz_load_balancer" {
@@ -131,12 +122,6 @@ resource "aws_lb" "ajaz_load_balancer" {
   subnets            = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
 
   enable_deletion_protection = true
-
-  access_logs {
-    bucket  = aws_s3_bucket.bucket.id
-    prefix  = "ajaz-load-balancer-logs"
-    enabled = true
-  }
 
   tags = {
     Environment = "ajaz_environment"
