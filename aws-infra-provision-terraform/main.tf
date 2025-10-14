@@ -107,4 +107,18 @@ resource "aws_instance" "web" {
     tags = {
         Name = "WebServerInstance"
     }
+    //When we script start then this script will run
+    user_data = base64encode(file("user_data.sh"))
+}
+
+resource "aws_instance" "web" {
+    ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+    instance_type = "t2.micro"
+    vpc_security_group_ids = [aws_security_group.my_security_group.id]
+    subnet_id = aws_subnet.subnet2.id
+    tags = {
+        Name = "WebServerInstance"
+    }
+    //When we script start then this script will run
+    user_data = base64encode(file("user_data1.sh"))
 }
