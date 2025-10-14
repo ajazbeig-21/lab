@@ -99,7 +99,7 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "web_server_1" {
     ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.my_security_group.id]
@@ -111,7 +111,7 @@ resource "aws_instance" "web" {
     user_data = base64encode(file("user_data.sh"))
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "web_server_2" {
     ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.my_security_group.id]
@@ -121,4 +121,24 @@ resource "aws_instance" "web" {
     }
     //When we script start then this script will run
     user_data = base64encode(file("user_data1.sh"))
+}
+
+resource "aws_lb" "ajaz_load_balancer" {
+  name               = "ajaz-load-balancer"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.my_security_group.id]
+  subnets            = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
+
+  enable_deletion_protection = true
+
+  access_logs {
+    bucket  = aws_s3_bucket.bucket.id
+    prefix  = "ajaz-load-balancer-logs"
+    enabled = true
+  }
+
+  tags = {
+    Environment = "ajaz_environment"
+  }
 }
