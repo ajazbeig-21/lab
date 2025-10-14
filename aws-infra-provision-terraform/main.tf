@@ -142,3 +142,47 @@ resource "aws_lb" "ajaz_load_balancer" {
     Environment = "ajaz_environment"
   }
 }
+
+resource "aws_lb_target_group" "ajaz_target_group" {
+  name     = "ajaz-target-group"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.my_vpc.id
+
+  health_check {
+    path = "/"
+    port = "traffic-port"
+  }
+  tags = {
+    Environment = "ajaz_environment"
+  }
+}
+
+resource "aws_lb_target_group_attachment" "ajaz_target_group_attachment_1" {
+  target_group_arn = aws_lb_target_group.ajaz_target_group.arn
+  target_id        = aws_instance.web_server_1.id
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "ajaz_target_group_attachment_2" {
+  target_group_arn = aws_lb_target_group.ajaz_target_group.arn
+  target_id        = aws_instance.web_server_2.id
+  port             = 80
+}
+
+resource "aws_lb_listener" "ajaz_listener" {
+load_balancer_arn = aws_lb.ajaz_load_balancer.arn
+port              = "80"
+protocol          = "HTTP"
+
+default_action {
+  type = "forward"
+  target_group_arn = aws_lb_target_group.ajaz_target_group.arn
+}
+
+}
+
+output "load_balancer_dns" {
+  description = "The DNS name of the load balancer"
+  value       = aws_lb.ajaz_load_balancer.dns_name
+}
