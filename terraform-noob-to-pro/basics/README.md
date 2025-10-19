@@ -1,4 +1,4 @@
-# Terraform Day 1 — Project README
+# Terraform Basics — Project README
 
 This folder contains a minimal Terraform example that provisions a single EC2 instance in AWS. Use this README to initialise, plan, apply, and destroy the example safely.
 
