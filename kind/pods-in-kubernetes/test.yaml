@@ -1,0 +1,21 @@
+employee:
+  name: Ajaz Beig
+  age: 30
+  department: Engineering
+  skills:
+    - Python
+    - Kubernetes
+    - Docker
+  address:
+    street: 123 Main St
+    city: Metropolis
+    state: NY
+    zip: 10101
+  isFullTime: true
+  projects:
+    - name: Project Alpha
+      duration: 6 months
+      role: Lead Developer
+    - name: Project Beta
+      duration: 3 months
+      role: Contributor
