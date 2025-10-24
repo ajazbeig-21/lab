@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ajaz Beig — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Personal portfolio built with Tailwind CSS" />
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <!-- NAV -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-semibold">AB</div>
+          <span class="font-semibold text-lg">Ajaz Beig</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" class="hover:text-indigo-600">About</a>
+          <a href="#projects" class="hover:text-indigo-600">Projects</a>
+          <a href="#skills" class="hover:text-indigo-600">Skills</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </nav>
+
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded-md hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden">
+      <div class="px-6 pb-6 pt-2 space-y-2">
+        <a href="#about" class="block">About</a>
+        <a href="#projects" class="block">Projects</a>
+        <a href="#skills" class="block">Skills</a>
+        <a href="#contact" class="block">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7">
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+            Hi, I’m <span class="text-indigo-600">Ajaz</span> — a Software Engineer
+          </h1>
+          <p class="mt-4 text-gray-600 max-w-2xl">
+            I build delightful interfaces and reliable backend services. I specialize in Angular, Spring Boot, and cloud deployments. I love making developer-friendly tools and clean UIs.
+          </p>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#projects" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700">View Projects</a>
+            <a href="#contact" class="inline-flex items-center gap-2 border border-indigo-600 text-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-50">Hire Me</a>
+          </div>
+
+          <div class="mt-8 grid grid-cols-3 gap-4 max-w-sm">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+              <div class="text-xs text-gray-500">Experience</div>
+              <div class="font-semibold">6 years</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+              <div class="text-xs text-gray-500">Focus</div>
+              <div class="font-semibold">Full Stack</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+              <div class="text-xs text-gray-500">Location</div>
+              <div class="font-semibold">Pune, India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-white border-t">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2">
+            <h2 class="text-2xl font-bold">About Me</h2>
+            <p class="mt-4 text-gray-600">I’m a software engineer focused on front-end experience and backend reliability. My daily toolbox includes Angular, TypeScript, Java (Spring Boot), AWS, Docker, Terraform and observability tools like Prometheus & Grafana.</p>
+
+            <h3 class="mt-6 font-semibold">What I enjoy building</h3>
+            <ul class="mt-3 grid sm:grid-cols-2 gap-2 text-gray-600">
+              <li>Responsive web apps with accessibility in mind</li>
+              <li>APIs and microservices with secure auth</li>
+              <li>CI/CD pipelines and cloud deployments</li>
+              <li>Developer-friendly automation tools</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+              <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Contact me</a>
+              <a href="#projects" class="px-4 py-2 border rounded-md">See projects</a>
+            </div>
+          </div>
+
+          <aside class="bg-gray-50 p-6 rounded-lg">
+            <h4 class="font-semibold">Quick Facts</h4>
+            <dl class="mt-4 space-y-3 text-sm text-gray-600">
+              <div>
+                <dt class="text-xs text-gray-500">Email</dt>
+                <dd>ajaz@example.com</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-gray-500">Phone</dt>
+                <dd>+91 98XXXXXXX</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-gray-500">Languages</dt>
+                <dd>English, Hindi</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-bold">Featured Projects</h2>
+      <p class="text-gray-600 mt-2">A few projects I’ve worked on recently — code, deployment and design.</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Card 1 -->
+        <article class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1526378729616-7f9a7a4b0b8a?w=600&q=60" alt="project" class="w-20 h-20 rounded-md object-cover" />
+            <div>
+              <h3 class="font-semibold">CarIQ Driven (Android)</h3>
+              <p class="text-sm text-gray-600 mt-1">Vehicle analytics app connected to an OBD device that shows diagnostics, alerts, and geofence/speed alerts.</p>
+              <div class="mt-3 text-xs text-gray-500">Stack: Android, Kotlin, REST, MQTT, Firebase</div>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <a class="text-indigo-600 text-sm" href="#">View repo</a>
+            <a class="text-indigo-600 text-sm" href="#">Live demo</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&q=60" alt="project" class="w-20 h-20 rounded-md object-cover" />
+            <div>
+              <h3 class="font-semibold">Deployment Pipeline Demo</h3>
+              <p class="text-sm text-gray-600 mt-1">End-to-end deployment of an Angular front-end in a container with CI/CD integration (Jenkins). Includes automated tests and observability setup.</p>
+              <div class="mt-3 text-xs text-gray-500">Stack: Angular, Docker, Jenkins, Terraform</div>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <a class="text-indigo-600 text-sm" href="#">Read case study</a>
+            <a class="text-indigo-600 text-sm" href="#">Screenshots</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=60" alt="project" class="w-20 h-20 rounded-md object-cover" />
+            <div>
+              <h3 class="font-semibold">Keycloak + Spring Boot RBAC</h3>
+              <p class="text-sm text-gray-600 mt-1">Role-based API access implementation using Keycloak and Spring Boot for enterprise workflows and multi-tenant setups.</p>
+              <div class="mt-3 text-xs text-gray-500">Stack: Spring Boot, Keycloak, PostgreSQL</div>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <a class="text-indigo-600 text-sm" href="#">Architecture</a>
+            <a class="text-indigo-600 text-sm" href="#">Docs</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-start gap-4">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=60" alt="project" class="w-20 h-20 rounded-md object-cover" />
+            <div>
+              <h3 class="font-semibold">Monitoring & Observability</h3>
+              <p class="text-sm text-gray-600 mt-1">Prometheus + Grafana dashboards for monitoring microservices, with alerting and runbook integrations.</p>
+              <div class="mt-3 text-xs text-gray-500">Stack: Prometheus, Grafana, Alertmanager</div>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <a class="text-indigo-600 text-sm" href="#">View dashboards</a>
+            <a class="text-indigo-600 text-sm" href="#">Playbook</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="bg-white border-t">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-bold">Skills</h2>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold">Frontend</h4>
+            <p class="text-sm text-gray-600 mt-2">Angular · TypeScript · HTML · CSS · Tailwind</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold">Backend</h4>
+            <p class="text-sm text-gray-600 mt-2">Java · Spring Boot · REST · JWT</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold">Cloud & Infra</h4>
+            <p class="text-sm text-gray-600 mt-2">AWS · Docker · Terraform · Jenkins</p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="font-semibold">Monitoring</h4>
+            <p class="text-sm text-gray-600 mt-2">Prometheus · Grafana · CloudWatch</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+      <div class="bg-white rounded-lg shadow-sm p-8">
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div>
+            <h2 class="text-2xl font-bold">Get in touch</h2>
+            <p class="mt-2 text-gray-600">Interested in working together or want to ask a question? Send a message and I’ll respond soon.</p>
+
+            <div class="mt-6 text-sm text-gray-600 space-y-3">
+              <div><strong>Email:</strong> ajaz@example.com</div>
+              <div><strong>Location:</strong> Pune, India</div>
+              <div><strong>Availability:</strong> Open to new roles</div>
+            </div>
+          </div>
+
+          <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent (demo)')">
+            <div>
+              <label class="text-sm">Name</label>
+              <input required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-indigo-300" />
+            </div>
+            <div>
+              <label class="text-sm">Email</label>
+              <input type="email" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-indigo-300" />
+            </div>
+            <div>
+              <label class="text-sm">Message</label>
+              <textarea required rows="4" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm focus:ring-2 focus:ring-indigo-300"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 border-t bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex items-center justify-between text-sm text-gray-600">
+      <div>© 2025 Ajaz Beig · Built with Tailwind CSS</div>
+      <div class="flex items-center gap-4">
+        <a href="#" aria-label="github">GitHub</a>
+        <a href="#" aria-label="linkedin">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn && menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
