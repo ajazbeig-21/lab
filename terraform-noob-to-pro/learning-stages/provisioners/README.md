@@ -35,8 +35,15 @@ Prerequisites
 Quick setup (macOS / Linux)
 1. Generate an SSH key (if you don't have one):
 ```bash
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
-ls -l ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa
+ls -l ~/.ssh 
+
+total 80
+-rw-------  1 host  staff   2610  4 Nov  2024 id_rsa
+-rw-r--r--  1 host  staff    576  4 Nov  2024 id_rsa.pub
+-rw-------  1 host  staff  13136 24 Oct 21:48 known_hosts
+-rw-------  1 host  staff  12392 24 Oct 21:48 known_hosts.old
+
 ```
 
 2. Import the public key into AWS:
