@@ -30,12 +30,16 @@ for testing dev is enough and for organization use use Prod mode
 
 
 this will not run the vault in background mode.
-vault server -dev -dev-root-token-id root -dev-tls
+vault server -dev -dev-root-token-id=root -dev-listen-address="0.0.0.0:8200"
 
 we get root token with above command
 
 open new terminal and set the env variables
-export VAULT_ADDR='https://0.0.0.0:8200'
+export VAULT_ADDR='http://0.0.0.0:8200'
 
+Now you are able to access the terrsform vault on 
+http://<EC2-PUBLIC-IP>:8200
+
+![Vault Login Screenshot](assets/vault-login.png)
 
 secret engine is provided by terraform
