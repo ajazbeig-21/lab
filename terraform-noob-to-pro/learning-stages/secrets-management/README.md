@@ -31,6 +31,8 @@ export VAULT_TOKEN='root'   # dev-only example; use proper auth in prod
 ```
 - Vault UI (dev): http://<EC2_PUBLIC_IP>:8200
 
+![alt text](./assets/vault-login.jpeg)
+
 3 — Enable KV engine and store a secret
 ```bash
 # Enable KV v2 at path "key-value-engine" (if not already enabled)
