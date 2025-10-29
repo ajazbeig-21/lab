@@ -40,6 +40,6 @@ export VAULT_ADDR='http://0.0.0.0:8200'
 Now you are able to access the terrsform vault on 
 http://<EC2-PUBLIC-IP>:8200
 
-![Vault Login Screenshot](assets/vault-login.png)
+![Vault Login Screenshot](assets/vault-login.jpeg)
 
 secret engine is provided by terraform
